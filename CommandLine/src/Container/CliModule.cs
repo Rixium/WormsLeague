@@ -11,6 +11,7 @@ using Worms.Resources.Replays.Text;
 using Worms.Resources.Schemes;
 using Worms.Resources.Schemes.Binary;
 using Worms.Resources.Schemes.Text;
+using Worms.Server.Auth;
 using Worms.Slack;
 using Worms.WormsArmageddon.Replays;
 
@@ -55,6 +56,9 @@ namespace Worms.Container
             builder.RegisterType<ReplayLogGenerator>().As<IReplayLogGenerator>();
 
             builder.RegisterGeneric(typeof(ResourceGetter<>)).As(typeof(ResourceGetter<>));
+
+            // Login
+            builder.RegisterType<LoginService>().As<ILoginService>();
         }
 
         private static void RegisterOsModules(ContainerBuilder builder)

@@ -30,6 +30,9 @@ docker: | alpine docker-build
 docker-build:
 	@.build/docker.sh "$(OutputDir)/linux-musl-x64" $(DockerImageName)
 
+lint:
+	@docker run -e RUN_LOCAL=true -v `pwd`:/tmp/lint github/super-linter:v2.0.0
+
 help:
 	@echo "Worm CLI"
 	@echo ""

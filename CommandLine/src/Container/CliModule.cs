@@ -58,7 +58,7 @@ namespace Worms.Container
             builder.RegisterGeneric(typeof(ResourceGetter<>)).As(typeof(ResourceGetter<>));
 
             // Login
-            builder.RegisterType<AuthCodeLoginService>().As<ILoginService>();
+            builder.RegisterType<DeviceCodeLoginService>().As<ILoginService>();
         }
 
         private static void RegisterOsModules(ContainerBuilder builder)

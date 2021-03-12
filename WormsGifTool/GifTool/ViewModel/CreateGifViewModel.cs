@@ -9,7 +9,7 @@ namespace GifTool.ViewModel
 {
     internal class CreateGifViewModel : PageViewModelBase
     {
-        private const int FrameRateDivider = 3; //Fraction of worms frame rate per frame in gif
+        private const int FrameRateDivider = 60; //Fraction of worms frame rate per frame in gif
         private const int AnimationDelay = 6; //Fraction of 1/100th of a second delay
 
         private readonly IGifEncoder _gifEncoder;
@@ -27,6 +27,7 @@ namespace GifTool.ViewModel
         public int ResolutionY { get; set; } = 480;
         public int Width { get; set; } = 640;
         public int Height { get; set; } = 480;
+        public int PlaybackSpeedMultiplier { get; set; } = 1;
 
         public bool CanCreateGif => _frames?.Length > 0;
 
@@ -68,7 +69,7 @@ namespace GifTool.ViewModel
             OnPropertyChanged(nameof(OperationStatus));
             OnPropertyChanged(nameof(CanCreateGif));
 
-            _frames = await _wormsRunner.CreateReplayVideo(_replay, FrameRateDivider, startTime, endTime, ResolutionX, ResolutionY);
+            _frames = await _wormsRunner.CreateReplayVideo(_replay, FrameRateDivider / PlaybackSpeedMultiplier, startTime, endTime, ResolutionX, ResolutionY);
             OnPropertyChanged(nameof(CanCreateGif));
             return "Exported replay frames";
         }

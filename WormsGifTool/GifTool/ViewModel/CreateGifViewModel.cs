@@ -10,7 +10,7 @@ namespace GifTool.ViewModel
     internal class CreateGifViewModel : PageViewModelBase
     {
         private const int FrameRateDivider = 60; //Fraction of worms frame rate per frame in gif
-        private const int AnimationDelay = 6; //Fraction of 1/100th of a second delay
+        private const int AnimationDelay = 2; //Fraction of 1/100th of a second delay
 
         private readonly IGifEncoder _gifEncoder;
         private readonly IWormsRunner _wormsRunner;

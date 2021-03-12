@@ -27,7 +27,7 @@ namespace GifTool.ViewModel
         public int ResolutionY { get; set; } = 480;
         public int Width { get; set; } = 640;
         public int Height { get; set; } = 480;
-        public int PlaybackSpeedMultiplier { get; set; } = 1;
+        public int PlaybackSpeedMultiplier { get; set; } = 4;
 
         public bool CanCreateGif => _frames?.Length > 0;
 
